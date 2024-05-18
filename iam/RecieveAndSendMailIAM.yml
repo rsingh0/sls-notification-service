@@ -1,0 +1,8 @@
+RecieveAndSendMailIAM:
+  - Effect: Allow
+    Action:
+      - sqs:ReceiveMessage # Recieve Mail from SQS to Lamda
+      - ses:SendEmail # Send Mail from Lamda to Recipient
+    Resource: 
+      - ${self:custom.mailQueue.arn}
+      - arn:aws:ses:*
